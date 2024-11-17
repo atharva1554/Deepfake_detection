@@ -4,7 +4,8 @@ import dlib
 import numpy as np
 from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)
+application = Flask(__name__)
+app=application 
 
 # Configure the upload folder
 UPLOAD_FOLDER = 'static/uploads'
