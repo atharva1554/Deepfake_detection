@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+</head>
+<body>
+    <header>
+        <h1>Upload Your Video</h1>
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/upload">Upload Video</a> |
+            <a href="/result">View Results</a>
+        </nav>
+    </header>
+    <main>
+        <!-- Video Upload Form -->
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="videoUpload">Choose a video to upload:</label>
+            <input type="file" id="videoUpload" name="video" accept="video/*" required>
+            <br><br>
+            <button type="submit">Upload and View Results</button>
+        </form>
+        <br>
+        <!-- Video Preview -->
+        <h2>Preview Your Video</h2>
+        <video id="videoPreview" controls style="max-width: 100%;"></video>
+        <script>
+            // Preview video when selected
+            document.getElementById('videoUpload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const videoElement = document.getElementById('videoPreview');
+                    videoElement.src = URL.createObjectURL(file);
+                    videoElement.load();
+                    videoElement.play();
+                }
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 Deepfake Awareness Project</p>
+    </footer>
+</body>
+</html>
+
